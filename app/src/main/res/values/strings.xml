@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">DictateAi</string>
+	<string name="ime_name">Dictate AI Keyboard</string>
+	<string name="hold_to_dictate">Hold to Dictate</string>
+	<string name="recording">Recording… Release to stop</string>
+	<string name="processing">Transcribing…</string>
+	<string name="inserted">Inserted</string>
+	<string name="mic_permission_rationale">Microphone permission required. Open the app to grant permission.</string>
+	<string name="backspace">⌫</string>
+</resources>
