@@ -1,64 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:background="#121212"
-    android:padding="16dp">
+    android:layout_height="280dp"
+    android:background="@drawable/bg_voice_container"
+    android:padding="32dp"
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:clipChildren="false"
+        android:clipToPadding="false">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:baselineAligned="false">
-
-            <Button
-                android:id="@+id/recordButton"
-                android:layout_width="0dp"
-                android:layout_height="64dp"
-                android:layout_weight="3"
-                android:layout_marginEnd="8dp"
-                android:text="@string/hold_to_dictate"
-                android:textAllCaps="false"
-                android:textSize="18sp"
-                android:backgroundTint="#1E88E5"
-                android:textColor="#FFFFFF" />
-
-            <Button
-                android:id="@+id/backspaceButton"
-                android:layout_width="0dp"
-                android:layout_height="64dp"
-                android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                android:text="@string/backspace"
-                android:textAllCaps="false"
-                android:textSize="20sp"
-                android:backgroundTint="#FF5722"
-                android:textColor="#FFFFFF" />
-
-        </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/progress"
-            style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
+        <!-- Title Text -->
+        <TextView
+            android:id="@+id/speakNowText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:text="Speak now"
+            android:textColor="#424242"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.02"
+            android:layout_marginBottom="40dp" />
+
+        <!-- Control Buttons Row -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <!-- Settings Button -->
+            <FrameLayout
+                android:id="@+id/settingsButton"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/bg_secondary_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_settings"
+                    android:tint="#616161"
+                    android:contentDescription="Settings" />
+            </FrameLayout>
+
+            <!-- Main Record Button -->
+            <FrameLayout
+                android:id="@+id/recordButtonContainer"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/bg_record_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:clipChildren="false"
+                android:clipToPadding="false">
+
+                <!-- Pulse Animation Ring (larger, rendered outside container bounds) -->
+                <View
+                    android:id="@+id/pulseRing"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_pulse_ring"
+                    android:visibility="gone" />
+
+                <!-- Microphone Icon -->
+                <ImageView
+                    android:id="@+id/micIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_mic"
+                    android:tint="#FFFFFF"
+                    android:contentDescription="Microphone" />
+            </FrameLayout>
+
+            <!-- Close/Delete Button -->
+            <FrameLayout
+                android:id="@+id/closeButton"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="48dp"
+                android:background="@drawable/bg_secondary_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_backspace"
+                    android:tint="#616161"
+                    android:contentDescription="Delete" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="32dp"
+            android:indeterminateTint="#1976D2"
             android:visibility="gone" />
 
+        <!-- Status Text -->
         <TextView
             android:id="@+id/statusText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp"
+            android:textColor="#757575"
             android:textSize="14sp"
-            android:text="" />
+            android:fontFamily="sans-serif"
+            android:text=""
+            android:visibility="gone" />
+
+        <!-- Audio Waveform Visualization - Hidden -->
+        <!-- Intentionally removed as per requirement -->
+
     </LinearLayout>
-</FrameLayout> 
+</FrameLayout>
